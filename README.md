@@ -1,24 +1,11 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is simply a rails API only APP which deals with authentication
 
-Things you may want to cover:
+* authentication
 
-* Ruby version
+* jwt token
 
-* System dependencies
+* cred todo API
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* swagger
