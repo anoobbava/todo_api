@@ -21,13 +21,15 @@ class TodosController < ApplicationController
     # PUT /todos/:id 
     def update
         @todo.update(todo_params)
-        head :no_content
+        json_response(@todo)
+        # head :no_content
     end
 
     # DELETE /todos/:id
     def destroy
         @todo.destroy
-        head :no_content
+        # head :no_content
+        json_response({message: 'success'})
     end
 
     private
