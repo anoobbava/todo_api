@@ -1,6 +1,7 @@
 # README
 
-This is simply a rails API only APP which deals with authentication
+This is simply a rails API only APP which deals with authentication which has Swagger only. Will add a Vue front end on top of this App.
+
 
 * authentication
 
