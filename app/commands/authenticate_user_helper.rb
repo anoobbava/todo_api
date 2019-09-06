@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AuthenticateUserHelper
   prepend SimpleCommand
 
@@ -8,13 +10,14 @@ class AuthenticateUserHelper
   end
 
   # this method will be needed by command
-  # since this is for the 
+  # since this is for the
   def call
-  # after user login, will pass the user-id to the JWT to create token
-  JsonWebToken.create_token(user_id: user.id) if user
+    # after user login, will pass the user-id to the JWT to create token
+    JsonWebToken.create_token(user_id: user.id) if user
   end
 
   private
+
   attr_accessor :email, :password
 
   def user
