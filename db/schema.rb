@@ -19,4 +19,12 @@ ActiveRecord::Schema.define(version: 2019_09_06_055836) do
     t.boolean "is_completed", default: false
   end
 
+  create_table "users", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.string "password_digest"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
 end
