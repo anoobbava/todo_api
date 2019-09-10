@@ -11,12 +11,38 @@ This is simply a rails API only APP which deals with authentication which has Sw
 
 * swagger
 
-# Api Testing with httpie
+# Api Testing with httpie with Login API
 
-* to call the index `http :3000/todos`
+## first create a user using the httpie
 
-* to create todo `http POST :3000/todos title=second`
+`User.create(email: 'test@gmail.com', password: '123456', password_confirmation: '123456', name: 'test')`
 
-* to update todo `http PUT :3000/todos title=changed`
+## create the auth token,
 
-* to delete todo `http DELETE :3000/todos/1`
+`http POST :3000/login email=test@gmail.com password=123456`
+
+Response will be like below
+
+`{
+    "auth_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1NjgxODUyNTJ9._Zps86KAwzn7ODX8MG3POYaFqaxzgJZ01vmY4oOcrBQ"
+}`
+
+## Fetch all todos
+
+  `http GET :3000/todos 'Authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1NjgxODUyNTJ9._Zps86KAwzn7ODX8MG3POYaFqaxzgJZ01vmY4oOcrBQ'`
+
+## Fetch single one
+
+`http GET :3000/todos/3 'Authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1NjgxODUyNTJ9._Zps86KAwzn7ODX8MG3POYaFqaxzgJZ01vmY4oOcrBQ'`
+
+## to create todo 
+
+`http POST :3000/todos title=latest is_completed=true 'Authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1NjgxODUyNTJ9._Zps86KAwzn7ODX8MG3POYaFqaxzgJZ01vmY4oOcrBQ'`
+
+## to update todo
+
+`http PUT :3000/todos/3 title=updated is_completed=true 'Authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1NjgxODUyNTJ9._Zps86KAwzn7ODX8MG3POYaFqaxzgJZ01vmY4oOcrBQ'`
+
+## to delete todo
+
+`http DELETE :3000/todos/3 'Authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1NjgxODUyNTJ9._Zps86KAwzn7ODX8MG3POYaFqaxzgJZ01vmY4oOcrBQ'`

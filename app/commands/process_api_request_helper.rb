@@ -36,8 +36,8 @@ class ProcessApiRequestHelper
 
   # fetch the user from auth token
   def fetch_user_from_auth_token
-    @user = User.find(decode_auth_token[user_id]) if decode_auth_token
-    @user = nil
-    errors.add(:token, 'invalid token')
+    @user = decode_auth_token ? User.find(decode_auth_token['user_id']) : nil
+    errors.add(:token, 'invalid token') if @user.nil?
+    @user
   end
 end

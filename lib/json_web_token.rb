@@ -11,9 +11,10 @@ class JsonWebToken
     end
 
     def decode_token(token)
-      # need to check what is the below data is coming
-      binding.pry
-      JWT.decode(token, Rails.application.secrets.secret_key_base)
+      response = JWT.decode(token, Rails.application.secrets.secret_key_base)[0]
+      # will have the data [{"user_id"=>1, "exp"=>1568185252}, {"typ"=>"JWT", "alg"=>"HS256"}]
+      # need to strip and fetch the user_id
+      HashWithIndifferentAccess.new response
     end
 
   end
