@@ -31,7 +31,7 @@ class ProcessApiRequestHelper
   def decode_auth_token
     return nil unless verify_header
 
-    JsonWebToken.decode(verify_header)
+    JsonWebToken.decode_token(verify_header)
   end
 
   # fetch the user from auth token

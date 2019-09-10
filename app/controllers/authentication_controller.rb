@@ -1,7 +1,9 @@
 # create the auth token
 class AuthenticationController < ApplicationController
-  skip_before_action :authenticate_user!
+  skip_before_action :authenticate_request
 
+  # will be called for the first time with user name and password and return
+  # the token if valid
   def authenticate
     command = AuthenticateUserHelper.call(params[:email], params[:password])
     if command.success?
