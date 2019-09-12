@@ -13,7 +13,9 @@ class AuthenticateUserHelper
   # since this is for the
   def call
     # after user login, will pass the user-id to the JWT to create token
-    JsonWebToken.create_token(user_id: user.id) if user
+    return nil unless user
+
+    return JsonWebToken.create_token(user_id: user.id), user
   end
 
   private

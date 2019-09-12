@@ -7,7 +7,7 @@ class AuthenticationController < ApplicationController
   def authenticate
     command = AuthenticateUserHelper.call(params[:email], params[:password])
     if command.success?
-      json_response(auth_token: command.result)
+      json_response(auth_token: command.result[0], user: command.result[1])
     else
       json_response({ error: command.errors }, status: :unauthorised)
     end
