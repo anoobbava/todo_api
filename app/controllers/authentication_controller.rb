@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # create the auth token
 class AuthenticationController < ApplicationController
   skip_before_action :authenticate_request
@@ -6,10 +8,11 @@ class AuthenticationController < ApplicationController
   # the token if valid
   def authenticate
     command = AuthenticateUserHelper.call(params[:email], params[:password])
+    # binding.pry
     if command.success?
       json_response(auth_token: command.result[0], user: command.result[1])
     else
-      json_response({ error: command.errors }, status: :unauthorised)
+      json_response(command.errors, 401)
     end
   end
 end
