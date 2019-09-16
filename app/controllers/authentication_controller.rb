@@ -8,7 +8,6 @@ class AuthenticationController < ApplicationController
   # the token if valid
   def authenticate
     command = AuthenticateUserHelper.call(params[:email], params[:password])
-    # binding.pry
     if command.success?
       json_response(auth_token: command.result[0], user: command.result[1])
     else
