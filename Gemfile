@@ -15,6 +15,7 @@ gem 'puma', '~> 3.11'
 gem 'bcrypt', '~> 3.1.7'
 gem 'jwt'
 gem 'simple_command'
+gem 'dotenv-rails', '~> 2.1', '>= 2.1.1'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
